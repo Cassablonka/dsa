@@ -1,8 +1,10 @@
+// HashMap Implementation
 class HashMap{
     constructor(size){
         this.data = new Array(size)
     }
 
+    // hashing function to create unique hashes for each new key
     _hash(key){
         let hash = 0
         for (let i = 0; i < key.length; i++) {
@@ -11,6 +13,7 @@ class HashMap{
         return hash
     }
 
+    // set up input based key value pair in a HashMap
     set(key,value){
         let address = this._hash(key)
         if (!this.data[address]) {
@@ -19,6 +22,7 @@ class HashMap{
         this.data[address].push([key, value])
     }
 
+    // access the value of a given key in a HashMap
     get(key){
         let address = this._hash(key)
         let currentBlock = this.data[address]
@@ -32,6 +36,7 @@ class HashMap{
         return undefined
     }
 
+    // to view the HashMap
     viewMap(){
         console.log(this.data)
     }
