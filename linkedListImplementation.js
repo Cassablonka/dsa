@@ -63,14 +63,26 @@ class LinkedList{
         }
         return currentNode
     }
+
+    reverse(){
+        let first = this.head
+        this.tail = this.head
+        let second = first.next
+        while (second) {
+            const temp = second.next
+            second.next = first
+            first = second
+            second = temp
+        }
+        this.head.next = null
+        this.head = first
+        return this
+    }
 }
 
 const linkedList = new LinkedList(20)
 linkedList.append(6)
 linkedList.append('Cassa')
-linkedList.prepend('First')
-linkedList.insert(2, 1996)
-console.log('Before Removal',linkedList.printList())
-linkedList.remove(3)
-console.log('After Removal',linkedList.printList())
-console.log(linkedList);
+linkedList.append('First')
+console.log(linkedList.printList());
+console.log(linkedList.reverse());
